@@ -1,0 +1,21 @@
+iTerm 2 iterm2.com
+
+oh my Zsh for mac and linux  ohmyz.sh
+
+Brew (for mac) brew.sh
+
+RVM  rvm.io
+
+Ruby 2.1.2 (run in the terminal after rvm)
+$ rvm install ruby-2.1.2
+
+rails 4 (run in your terminal)
+$ gem install rails
+
+go rails
+
+Sublime, Notepad +++, Atom
+
+Xcode command line tools:  osxdaily.com/2014/02/12/install-command-line-tools-mac-os-x/
+
+Git: git-scm.com/downloads
