@@ -152,7 +152,7 @@ while @counter < @times_to_run
 	@counter +=1
 	puts "Counter: #{@counter}"
 	live_die
-	sleep(0.2)
+	sleep(0.15)
 
 end
 
