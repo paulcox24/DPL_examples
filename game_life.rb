@@ -2,7 +2,6 @@
 
 @board_size = 10
 @counter = 0 # initiate counter
-@continue = 0# break for the loop
 @times_to_run = 200
 
 # 	@board = 
@@ -44,47 +43,40 @@ end
 
 
 def random_board
-	a = ['o','o',' ',' ',' ',' ',' ',' ',' ',' ']*@board_size
+	a = ['[]','[]','  ','  ','  ','  ','  ','  ','  ','  ']*@board_size
 	@board = []
 	@board_size.times { @board << a.sample(@board_size) }
-  @tracker = @board#create initial tracker from board
-  @living = Array.new(@board_size) {Array.new(@board_size)}
+  @tracker = Array.new(@board_size) {Array.new(@board_size, 0)}
+  @living = Array.new(@board_size) {Array.new(@board_size, 0)}
 end
 
 
 def display_board
-puts ''
+puts "board #{@counter}"
 @board.each { |row| puts row.join(' ')} #display board
 puts ''
 end
 
-def display_living
-puts ''
-@living.each { |row| puts row.join(' ')} #display board
-puts ''
-end
+# def display_living
+# puts "living #{@counter}"
+# @living.each { |row| puts row.join('  ')} #display board
+# puts ''
+# end
 
 
 #live
 def live(xpos, ypos)
-	@tracker[xpos][ypos] = 'o'	
+	@tracker[xpos][ypos] = '[]'	
 end
 
 #kill
 def kill(xpos, ypos)
-	@tracker[xpos][ypos] = ' '	
+	@tracker[xpos][ypos] = '  '	
 end
 
 def check_edge(posx, posy, xmod, ymod)
-	  # xpos and ypos are the x and y coordinates of the cells we are checking
-	  # xmod and ymod are the modifiers to get to an adjacent cell
-	  # I.E if we wish to evaluate the top left cell, the modifiers are xmod = -1 and ymod = 1
-	  # we set x to be the x coordinate of the cell we are checking
 	  x = posx + xmod
-	  # If the cell is on the edge of the grid and we add to it, it will return nil
-	  # This is because arrays are indexed from 0
-	  # If we pass in the coordinates for 0, 4 as the cell, adding 1 to 4 will become 5 which is outside the boundary of the array
-	  # In this case, we manually set the value to be 0, so that instead of going outside the array, it jumps to the other side
+
 	  if posx + xmod >= @board_size
       x = 0
 	  end
@@ -103,7 +95,7 @@ def check_edge(posx, posy, xmod, ymod)
 	  	y = @board_size -1
 	  end
 
-	  if @board[x][y] == 'o'
+	  if @board[x][y] == '[]'
 	   @surrounding_live += 1
 
 	  end
@@ -127,13 +119,13 @@ def live_die#update tracker
 		  check_edge(xpos, ypos, -1, 1)
 		  check_edge(xpos, ypos, -1, -1)
 
-      @living[xpos][ypos] = @surrounding_live
+      #@living[xpos][ypos] = @surrounding_live
 
-			if cell == 'o'
+			if cell == '[]'
 	      if @surrounding_live == 2 || @surrounding_live == 3
-	          live(xpos,ypos)
+	        live(xpos,ypos)
 	      else
-	          kill(xpos,ypos)
+	        kill(xpos,ypos)
 	      end
 	    else
 	      if @surrounding_live == 3
@@ -145,7 +137,10 @@ def live_die#update tracker
 	  end
 	end
 
-	@board= @tracker
+	@board = @tracker
+
+	@tracker = Array.new(@board_size) {Array.new(@board_size, 0)} #reset tracker
+
 end 	
 
 define_board
@@ -155,7 +150,7 @@ random_board
 while @counter < @times_to_run
 	
 	system("clear")
-  # display_living
+  #display_living
 	display_board
 	@counter +=1
 	puts "Counter: #{@counter}"
