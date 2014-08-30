@@ -52,7 +52,7 @@ end
 
 
 def display_board
-puts "board #{@counter}"
+puts ''
 @board.each { |row| puts row.join(' ')} #display board
 puts ''
 end
