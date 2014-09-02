@@ -30,7 +30,7 @@
   def recombine
     roman = [@roman_hundreds, @roman_tens, @roman_single]
     roman.compact!
-    puts "#{@number} in Roman Numerals is #{roman.join}"
+    puts "#{@number} in Roman Numerals is \n#{roman.join}\n "
   end
 
   def again
