@@ -48,6 +48,9 @@ class Calculator
 
   end
 
+calculator = Calculator.new
+calculator.calc
+
 
 end
 
