@@ -43,16 +43,16 @@ class Calculator
   	  	puts "Invalid input!"	 #failsafe
       end
       puts "Current value is #{current_value}\n " #display current value
-  		    
     end
-
   end
+end
+          
+
+
+
 
 calculator = Calculator.new
 calculator.calc
-
-
-end
 
 
 
