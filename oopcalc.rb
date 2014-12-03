@@ -1,9 +1,10 @@
 class Calculator
+  @@calc_count = 0
   attr_accessor :value_1
   def initialize(value1,value2)
     @value_1 = value1
     @value_2 = value2
-
+    @@calc_count += 1
     puts "Your values are \n#{@value_1} and #{@value_2}"
   end
 
@@ -24,6 +25,11 @@ class Calculator
   def value_2=(value)
     @value_2 = value
   end
+
+  def self.calc_count
+    @@calc_count
+  end
+
 
   def add
     result = @value_1 + @value_2
