@@ -1,5 +1,5 @@
 #roman numerals
-@continue = 1
+@continue = true
 
 def new_number
   puts "Enter a number 1 - 999"
@@ -36,13 +36,13 @@ end
 def again
   puts "Continue...   y/n"
   if gets.chomp.downcase.chars.first == 'y'
-    @continue = 1
+    @continue = true
   else 
-    @continue = 0
+    @continue = false
   end
 end
 
-while @continue == 1 do
+while @continue do
 new_number()
 standardize()
 convert_digits()
