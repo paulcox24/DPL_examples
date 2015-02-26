@@ -19,11 +19,9 @@ class Encryptor
 
   def encrypt(string, rotation)
   	letters = string.split("")
-
   	@resultse = letters.collect do |letter|
   		encrypted_letter = encrypt_letter(letter, rotation)
   	end
-
   	@resultse = @resultse.join
   end
 
@@ -32,7 +30,6 @@ class Encryptor
   	@resultsd = letters.collect do |letter|
   		decrypted_letter = decrypt_letter(letter, rotation)
   	end
-
   	@resultsd = @resultsd.join
   end
 
