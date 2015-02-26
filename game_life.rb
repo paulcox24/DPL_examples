@@ -12,8 +12,6 @@
 #  ['o','o','x','o','x']]
 #@board= Array.new(board_size) {Array.new(board_size, ['x','o'].sample)} #creates board all spaces dead 'x'
 
- loop
-
 def times_to_run
 	puts "How many games?\nDefault is 200."
 	number = gets.chomp.to_i
@@ -52,9 +50,9 @@ end
 
 
 def display_board
-puts ''
-@board.each { |row| puts row.join(' ')} #display board
-puts ''
+	puts ''
+	@board.each { |row| puts row.join(' ')} #display board
+	puts ''
 end
 
 # def display_living
