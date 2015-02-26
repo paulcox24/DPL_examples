@@ -1,6 +1,6 @@
 class HighCard
   attr_accessor :deck
-  SUITS = ["Diamonds", "Clubs", "Spades", "Hearts"]
+  SUITS = ["Clubs", "Diamonds", "Hearts", "Spades"]
   VALUES = ["2", "3", "4", "5", "6","7","8","9", "10", "Jack", "Queen", "King", "Ace"]
 
   def initialize
@@ -34,33 +34,36 @@ class HighCard
     end 
   end
 
-  def winner
-    draw = draw_card.split(" ")[0] 
-    comp_draw = draw_computer.split(" ")[0] 
-    draw_value = VALUES.index(draw) 
-    comp_value = VALUES.index(comp_draw)
+  def deal
+    draw = draw_card.split(" ")
+    comp_draw = draw_computer.split(" ")
+    draw_value = VALUES.index(draw[0]) 
+    comp_value = VALUES.index(comp_draw[0])
     if draw_value > comp_value
       @player_score += 1
-      puts "Winner! You got the high card!\nPlayer - #{@player_score}\nComputer - #{@comp_score}\nDraw - #{@draw_count}"
+      puts "Winner! You got the high card!\nPlayer - #{@player_score}\nComputer - #{@comp_score}"
     elsif draw_value < comp_value
       @comp_score += 1
-      puts "Womp, Womp. Computer got the high card!\nPlayer - #{@player_score}\nComputer - #{@comp_score}\nDraw - #{@draw_count}"
+      puts "Womp, Womp. Computer got the high card!\nPlayer - #{@player_score}\nComputer - #{@comp_score}"
     else 
-      @draw_count += 1
-      puts "Draw:/\nPlayer - #{@player_score}\nComputer - #{@comp_score}\nDraw - #{@draw_count}"
+      if SUITS.index(draw[2]) > SUITS.index(comp_draw[2])
+        @player_score += 1
+        puts "Winner! You got the high suit!\nPlayer - #{@player_score}\nComputer - #{@comp_score}"
+      else
+        @comp_score += 1
+        puts "Womp, Womp. Computer got the high suit!\nPlayer - #{@player_score}\nComputer - #{@comp_score}"
+      end
     end
     puts "*********************"
   end
 
   def full_deck
     until @deck.empty?
-      winner
-      @game_count +=1
-      puts "Games " + @game_count.to_s 
+      @game_count += 1
+      puts "Game " + @game_count.to_s 
+      deal
     end
   end
 
 end
 
-game = HighCard.new
-game.full_deck
