@@ -50,24 +50,24 @@ class Calculator
   end  
 
   def add
-    result = @value_1 + @value_2
-    puts "Your answer is #{result}"
+    print_result(@value_1 + @value_2)
   end
 
   def subtract
-    result = @value_1 - @value_2
-    puts "Your answer is #{result}"
+    print_result(@value_1 - @value_2)
   end
 
   def multiply
-    result = @value_1 * @value_2
-    puts "Your answer is #{result}"
+    print_result(@value_1 * @value_2)
   end
 
   def divide
-    result = @value_1.to_f / @value_2.to_f
-    puts "Your answer is #{result}"
+    print_result(@value_1.to_f / @value_2.to_f)
   end 
+
+  def print_result(result)
+    puts "Your answer is #{result}"
+  end
 
 end
 
