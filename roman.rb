@@ -43,9 +43,9 @@ def again
 end
 
 while @continue do
-new_number()
-standardize()
-convert_digits()
-recombine()
-again()
+  new_number()
+  standardize()
+  convert_digits()
+  recombine()
+  again()
 end

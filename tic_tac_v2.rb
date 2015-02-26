@@ -1,4 +1,4 @@
-# still to do: secect number of players
+# still to do: select number of players
 
 def tic_tac
 	puts "**********************"
@@ -22,20 +22,20 @@ def tic_tac
 	end
 
 	#show current player/computer assignment
-	puts "Player:  #{player}\nComputer:  #{computer}"
-	puts " "
+	puts "Player:  #{player}\nComputer:  #{computer}\n "
 
 	# create board
 	board = [[1,2,3],[4,5,6],[7,8,9]]
 
 	# show board
-	board.each do
-		|r| puts r.map { |p| p}.join(' ')
+	board.each do	|row| 
+		puts row.map { |col| col}.join(' ')
 	end
 
 	puts ''	
 
 	choice_options = [1,2,3,4,5,6,7,8,9]
+	
 	loop do
 		#player turn
 		puts "Select a Square 1-9"
@@ -127,9 +127,9 @@ loop do
   puts 'Play Tic Tac Toe? y/n'
   again= gets.chomp.downcase
   if again == "y"
-		tic_tac()
+		tic_tac
 	else
-	exit
+		nexit
 	end
 end
 
