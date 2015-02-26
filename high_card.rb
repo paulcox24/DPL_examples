@@ -35,6 +35,8 @@ class HighCard
   end
 
   def deal
+    @game_count += 1
+    puts "Game " + @game_count.to_s
     draw = draw_card.split(" ")
     comp_draw = draw_computer.split(" ")
     draw_value = VALUES.index(draw[0]) 
@@ -59,11 +61,12 @@ class HighCard
 
   def full_deck
     until @deck.empty?
-      @game_count += 1
-      puts "Game " + @game_count.to_s 
       deal
     end
   end
 
 end
+
+game = HighCard.new
+game.full_deck
 
