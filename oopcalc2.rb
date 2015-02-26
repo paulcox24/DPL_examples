@@ -1,30 +1,35 @@
 class Calculator
+  @@calc_count = 0
+  attr_accessor :value2
+
   def initialize
-    puts 'Welcome to the Calculator'
-    puts 'Please enter your first value'
-    @value_1 = gets.chomp.to_i
+    puts "Welcome to the Calculator\nPlease enter your first value"
+    @value1 = gets.chomp.to_i
     puts 'Please enter your second value'
-    @value_2 = gets.chomp.to_i
+    @value2 = gets.chomp.to_i
     run_operation(get_operator)
+    print_result(@result)
   end
 
   #getters
-  def value_1
-    @value_1
+  def value1
+    @value1
   end
 
-  def value_2
-    @value_2
-  end
+  # attribute accessor takes care of this
+  # def value2
+  #   @value2
+  # end
 
   #setters
-  def value_1=(value)
-    @value_1 = value
+  def value1=(value)
+    @value1 = value
   end
 
-  def value_2=(value)
-    @value_2 = value
-  end  
+  # attribute accessor takes care of this
+  # def value2=(value)
+  #   @value2 = value
+  # end  
 
   def get_operator
     puts "What operation would you like to perform\n1. Add\n2. Subtract\n3. Multipy\n4. Divide"
@@ -50,19 +55,19 @@ class Calculator
   end  
 
   def add
-    print_result(@value_1 + @value_2)
+    @result = @value1 + @value2
   end
 
   def subtract
-    print_result(@value_1 - @value_2)
+    @result = @value1 - @value2
   end
 
   def multiply
-    print_result(@value_1 * @value_2)
+    @result = @value1 * @value2
   end
 
   def divide
-    print_result(@value_1.to_f / @value_2.to_f)
+    @result = @value1.to_f / @value2.to_f
   end 
 
   def print_result(result)
