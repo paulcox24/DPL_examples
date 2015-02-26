@@ -3,12 +3,17 @@ class Calculator
   attr_accessor :value2
 
   def initialize
+    @@calc_count += 1
     puts "Welcome to the Calculator\nPlease enter your first value"
     @value1 = gets.chomp.to_i
     puts 'Please enter your second value'
     @value2 = gets.chomp.to_i
-    run_operation(get_operator)
+    run_operation
     print_result(@result)
+  end
+
+  def self.calc_count
+    @@calc_count
   end
 
   #getters
@@ -41,7 +46,7 @@ class Calculator
     end   
   end
 
-  def run_operation(operation)
+  def run_operation(operation=get_operator)
     case operation 
     when 1
       add
@@ -70,7 +75,7 @@ class Calculator
     @result = @value1.to_f / @value2.to_f
   end 
 
-  def print_result(result)
+  def print_result(result=@result)
     puts "Your answer is #{result}"
   end
 
