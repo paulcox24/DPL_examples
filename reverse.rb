@@ -1,10 +1,10 @@
 
 puts "Enter a string"
-word= gets.chomp
+word = gets.chomp
 
 a=[]
 word.each_char do |char|
-	a<<char
+	a << char
 end
 
 word_index= a.length-1
@@ -15,7 +15,7 @@ until word_index == -1 do
 	word_index -= 1
 end
 
-rev_word= rev_word_array.join.to_s
+rev_word = rev_word_array.join.to_s
 
 puts word
 puts rev_word
