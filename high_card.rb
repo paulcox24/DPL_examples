@@ -1,13 +1,12 @@
 class HighCard
   attr_accessor :deck
   SUITS = ["Clubs", "Diamonds", "Hearts", "Spades"]
-  VALUES = ["2", "3", "4", "5", "6","7","8","9", "10", "Jack", "Queen", "King", "Ace"]
+  VALUES = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"]
 
   def initialize
     @deck = []
     @comp_score = 0
     @player_score = 0
-    @draw_count = 0
     @game_count = 0
     SUITS.each do |suit|
       VALUES.each do |value|
