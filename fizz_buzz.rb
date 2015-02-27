@@ -10,7 +10,7 @@
   # end
 # end
 
-# (1..100).each { |i| i % 5 == 0 ? (i % 3 == 0 ? (puts "FizzBuzz") : (puts "Buzz")) : (i % 3 == 0 ? (puts "Fizz") : (puts i)) }
+(1..100).each { |i| i % 5 == 0 ? (i % 3 == 0 ? (puts "FizzBuzz") : (puts "Buzz")) : (i % 3 == 0 ? (puts "Fizz") : (puts i)) }
 
 # (1..100).each do |i|
 #   x = ""
