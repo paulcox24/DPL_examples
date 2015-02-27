@@ -57,7 +57,8 @@ def tic_tac
 		when 8 then board[2][1] = "#{player}"
 		when 9 then board[2][2] = "#{player}"
 		else puts "Invalid selection"
-	end
+		end
+
 		choice_options = choice_options - [player_choice] #remove selection from options
 	
 		#computer turn
