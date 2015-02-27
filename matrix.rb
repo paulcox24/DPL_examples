@@ -30,3 +30,9 @@ end
 # Matrix.rotate(square)
 # puts ''
 # Matrix.rotate(rectangle)
+
+# Array.new(10) do |row| 
+# 	Array.new(10) do |column| 
+# 		(0..9).to_a.sample 
+# 	end 
+# end
