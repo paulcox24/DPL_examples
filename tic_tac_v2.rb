@@ -130,7 +130,7 @@ loop do
   if again == "y"
 		tic_tac
 	else
-		nexit
+		next
 	end
 end
 
