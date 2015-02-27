@@ -6,9 +6,11 @@ class Matrix
 		matrix_cols = matrix[0].length
 		matrix.each { |r| puts r.inspect}
 		puts (' ')
-		#create a new matrix the 
+		#create a new matrix 
 		rotated_matrix = Array.new(matrix_cols) { |rows| Array.new(matrix_rows) { |cols| matrix[cols][matrix_cols - 1 - rows] } }
-	  #rotated_matrix = matrix.transpose.reverse
+	  
+		#in one line
+	  # rotated_matrix = matrix.transpose.reverse
 		#display the new matrix
 	  rotated_matrix.each { |row| puts row.inspect}
 	end	
