@@ -18,7 +18,7 @@ def tic_tac
 			computer = :X
 		else
 			puts "Please enter X or O\n "
-			end
+		end
 	end
 
 	#show current player/computer assignment
@@ -40,8 +40,7 @@ def tic_tac
 		#player turn
 		puts "Select a Square 1-9"
 		player_choice = gets.chomp.to_i
-		if choice_options.include?(player_choice) 
-		else
+		unless choice_options.include?(player_choice) 
 		  puts "Try again" 
 		  redo
 		end	
@@ -59,7 +58,7 @@ def tic_tac
 		else puts "Invalid selection"
 		end
 
-		choice_options = choice_options - [player_choice] #remove selection from options
+		choice_options.delete(player_choice) #remove selection from options
 	
 		#computer turn
 		computer_choice = choice_options.sample
@@ -80,9 +79,7 @@ def tic_tac
 		puts ''
 		puts "******************\n "
 		
-		board.each do
-			|r| puts r.map { |p| p}.join(' ')
-		end
+		board.each { |r| puts r.map { |p| p}.join(' ') }
 		puts ''
 
 		choice_options = choice_options - [computer_choice] #remove selection from options
@@ -130,7 +127,7 @@ loop do
   if again == "y"
 		tic_tac
 	else
-		next
+		exit
 	end
 end
 
