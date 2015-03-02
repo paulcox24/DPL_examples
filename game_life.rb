@@ -72,24 +72,24 @@ def kill(xpos, ypos)
 	@tracker[xpos][ypos] = '  '	
 end
 
-def check_edge(posx, posy, xmod, ymod)
-	  x = posx + xmod
+def check_edge(xpos, ypos, xmove, ymove)
+	  x = xpos + xmove
 
-	  if posx + xmod >= @board_size
+	  if xpos + xmove >= @board_size
       x = 0
 	  end
 
-	  if posx + xmod < 0
+	  if xpos + xmove < 0
 	  	x = @board_size - 1
 	  end
 
-	  y = posy + ymod
+	  y = ypos + ymove
 
-	  if posy + ymod >= @board_size
+	  if ypos + ymove >= @board_size
       y = 0
 	  end
 
-	  if posy + ymod < 0
+	  if ypos + ymove < 0
 	  	y = @board_size -1
 	  end
 
@@ -104,7 +104,7 @@ end
 #cell is the value in the cell @board[xpos][ypos]
 #xpos is the row position, the index in the overall board array
 #ypos is the column position, the index in the row array in the board array
-def live_die#update tracker
+def live_die #update tracker
 	@board.each_with_index do |row, xpos|
 		row.each_with_index do |cell, ypos|
 			@surrounding_live = 0
