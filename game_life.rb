@@ -50,7 +50,7 @@ def random_board
 	@board = []
 	@board_size.times { @board << sample_array.sample(@board_size) }
   @tracker = Array.new(@board_size) {Array.new(@board_size, 0)}
-  # @living = Array.new(@board_size) {Array.new(@board_size, 0)}
+  @living = Array.new(@board_size) {Array.new(@board_size, 0)}
 end
 
 
@@ -60,11 +60,11 @@ def display_board
 	puts ''
 end
 
-# def display_living
-# puts "living #{@counter}"
-# @living.each { |row| puts row.join('  ')} #display board
-# puts ''
-# end
+def display_living
+puts "living #{@counter}"
+@living.each { |row| puts row.join('  ')} #display board
+puts ''
+end
 
 
 #live
@@ -146,7 +146,7 @@ random_board
 
 while @counter < @times_to_run
 	system("clear")
-  # display_living
+  display_living
 	display_board
 	@counter +=1
 	puts "Counter: #{@counter}"
