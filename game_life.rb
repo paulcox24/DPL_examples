@@ -27,9 +27,9 @@ end
 
 
 def define_board
-	puts "How large would you like the board?
-	\nBoard will be 10x10 by defalut
-	\nEnter a number 1 - 40"
+	puts "How large would you like the board?"
+	puts "Board will be 10x10 by defalut"
+	puts "Enter a number 1 - 40"
 	selection = gets.chomp.to_i
 	case selection
 	when (1..50)
@@ -80,7 +80,7 @@ end
 def check(xpos, ypos, xmove, ymove) # check and adjacent cell for alive or dead
   if xpos + xmove >= @board_size # return to index 0 if the modifier goes above the board
     x = 0
-  elsif xpos + xmove < 0  # return to the end of the board if the 
+  elsif xpos + xmove < 0  # return to the end of the board if modifiers moves below
   	x = @board_size - 1
   else
   	x = xpos + xmove # new xposition from the modifyer
@@ -93,7 +93,7 @@ def check(xpos, ypos, xmove, ymove) # check and adjacent cell for alive or dead
   else
   	y = ypos + ymove
   end
-  @surrounding_live += 1 if @board[x][y] == @alive
+  @surrounding_live += 1 if @board[x][y] == @alive #if neighbor cell is alive add to the count
 end
 
 
@@ -134,7 +134,7 @@ def live_die #update tracker
 	  end
 	end
 
-	@board = @tracker
+	@board = @tracker #copy completed tracker to new board
 
 	@tracker = Array.new(@board_size) {Array.new(@board_size, 0)} #reset tracker
 
@@ -149,9 +149,9 @@ while @counter < @times_to_run
   display_living
 	display_board
 	@counter +=1
+	live_die
 	puts "Counter: #{@counter}"
 	puts "Cells Alive: #{@cells_alive}"
-	live_die
 	sleep(0.15)
 	break if @cells_alive <= 0
 
