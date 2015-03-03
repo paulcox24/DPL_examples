@@ -77,7 +77,7 @@ def kill(xpos, ypos)
 	@tracker[xpos][ypos] = @dead
 end
 
-def check_edge(xpos, ypos, xmove, ymove) # check and adjacent cell for alive or dead
+def check(xpos, ypos, xmove, ymove) # check and adjacent cell for alive or dead
   if xpos + xmove >= @board_size # return to index 0 if the modifier goes above the board
     x = 0
   elsif xpos + xmove < 0  # return to the end of the board if the 
@@ -106,14 +106,14 @@ def live_die #update tracker
 	@board.each_with_index do |row, xpos|
 		row.each_with_index do |cell, ypos|
 			@surrounding_live = 0
-		  check_edge(xpos, ypos, 0, -1)
-		  check_edge(xpos, ypos, 0, 1)
-			check_edge(xpos, ypos, 1, 0)
-		  check_edge(xpos, ypos, 1, 1)
-		  check_edge(xpos, ypos, 1, -1)
-		  check_edge(xpos, ypos, -1, 0)
-		  check_edge(xpos, ypos, -1, 1)
-		  check_edge(xpos, ypos, -1, -1)
+		  check(xpos, ypos, 0, -1)
+		  check(xpos, ypos, 0, 1)
+			check(xpos, ypos, 1, 0)
+		  check(xpos, ypos, 1, 1)
+		  check(xpos, ypos, 1, -1)
+		  check(xpos, ypos, -1, 0)
+		  check(xpos, ypos, -1, 1)
+		  check(xpos, ypos, -1, -1)
 
       @living[xpos][ypos] = @surrounding_live
 
