@@ -2,7 +2,7 @@
 @counter = 0 # initiate counter
 @times_to_run = 200
 @alive = '[]'
-@dead = '  '
+@dead = '..'
 @percent_alive = 20
 
 # 	@board = 
@@ -68,67 +68,67 @@ end
 
 
 #live
-def live(xpos, ypos)
-	@tracker[xpos][ypos] = @alive	
+def live(x, y)
+	@tracker[x][y] = @alive	
 end
 
 #kill
-def kill(xpos, ypos)
-	@tracker[xpos][ypos] = @dead
+def kill(x, y)
+	@tracker[x][y] = @dead
 end
 
-def check(xpos, ypos, xmove, ymove) # check and adjacent cell for alive or dead
-  if xpos + xmove >= @board_size # return to index 0 if the modifier goes above the board
+def check(x, y, xmove, ymove) # check and adjacent cell for alive or dead
+  if x + xmove >= @board_size # return to index 0 if the modifier goes above the board
     x = 0
-  elsif xpos + xmove < 0  # return to the end of the board if modifiers moves below
+  elsif x + xmove < 0  # return to the end of the board if modifiers moves below
   	x = @board_size - 1
   else
-  	x = xpos + xmove # new xposition from the modifyer
+  	x = x + xmove # new xition from the modifyer
   end
 
-  if ypos + ymove >= @board_size
+  if y + ymove >= @board_size
     y = 0
-  elsif ypos + ymove < 0
+  elsif y + ymove < 0
   	y = @board_size -1
   else
-  	y = ypos + ymove
+  	y = y + ymove
   end
   @surrounding_live += 1 if @board[x][y] == @alive #if neighbor cell is alive add to the count
 end
 
 
 
-#cell is the value in the cell @board[xpos][ypos]
-#xpos is the row position, the index in the overall board array
-#ypos is the column position, the index in the row array in the board array
+#cell is the value in the cell @board[x][y]
+#x is the row position, the index in the overall board array
+#y is the column position, the index in the row array in the board array
 def live_die #update tracker
 	@cells_alive = 0
-	@board.each_with_index do |row, xpos|
-		row.each_with_index do |cell, ypos|
+	@board.each_with_index do |row, x|
+		row.each_with_index do |cell, y|
 			@surrounding_live = 0
-		  check(xpos, ypos, 0, -1)
-		  check(xpos, ypos, 0, 1)
-			check(xpos, ypos, 1, 0)
-		  check(xpos, ypos, 1, 1)
-		  check(xpos, ypos, 1, -1)
-		  check(xpos, ypos, -1, 0)
-		  check(xpos, ypos, -1, 1)
-		  check(xpos, ypos, -1, -1)
+		  check(x, y, 0, -1)
+		  check(x, y, 0, 1)
+			check(x, y, 1, 0)
+		  check(x, y, 1, 1)
+		  check(x, y, 1, -1)
+		  check(x, y, -1, 0)
+		  check(x, y, -1, 1)
+		  check(x, y, -1, -1)
 
-      @living[xpos][ypos] = @surrounding_live
+      @living[x][y] = @surrounding_live
 
 			if cell == @alive
 	      if @surrounding_live == 2 || @surrounding_live == 3
-	        live(xpos,ypos)
+	        live(x,y)
 	      else
-	        kill(xpos,ypos)
+	        kill(x,y)
 	      end
 	      @cells_alive += 1
 	    else
 	      if @surrounding_live == 3
-		      live(xpos,ypos)
+		      live(x,y)
 		     else
-		     	kill(xpos,ypos)
+		     	kill(x,y)
 		    end
 	    end
 	  end
@@ -146,7 +146,7 @@ random_board
 
 while @counter < @times_to_run
 	system("clear")
-  # display_living
+  display_living
 	display_board
 	@counter +=1
 	live_die
