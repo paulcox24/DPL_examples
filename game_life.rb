@@ -2,7 +2,7 @@
 @counter = 0 # initiate counter
 @times_to_run = 200
 @alive = '[]'
-@dead = '..'
+@dead = '  '
 @percent_alive = 20
 
 # 	@board = 
@@ -50,7 +50,7 @@ def random_board
 	@board = []
 	@board_size.times { @board << sample_array.sample(@board_size) }
   @tracker = Array.new(@board_size) {Array.new(@board_size, 0)}
-  @living = Array.new(@board_size) {Array.new(@board_size, "..")}
+  @living = Array.new(@board_size) {Array.new(@board_size, @dead)}
 end
 
 
@@ -155,14 +155,6 @@ while @counter < @times_to_run
 	sleep(0.15)
 	break if @cells_alive <= 0
 
-end
-
-
-board.each_with_index do |row, row_index|
-  row.each_with_index do |col, col_index|
-    puts " x: #{row_index.to_s}, y: #{col_index.to_s}"
-    puts "Contains: #{col.to_s}"
-  end
 end
 
 
