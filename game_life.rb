@@ -102,7 +102,6 @@ end
 #xpos is the row position, the index in the overall board array
 #ypos is the column position, the index in the row array in the board array
 def live_die #update tracker
-	@start_cells = @cells_alive
 	@cells_alive = 0
 	@board.each_with_index do |row, xpos|
 		row.each_with_index do |cell, ypos|
@@ -134,7 +133,7 @@ def live_die #update tracker
 	    end
 	  end
 	end
-	@end_cells = @cells_alive
+
 	@board = @tracker #copy completed tracker to new board
 
 	@tracker = Array.new(@board_size) {Array.new(@board_size, 0)} #reset tracker
@@ -147,7 +146,7 @@ random_board
 
 while @counter < @times_to_run
 	system("clear")
-  display_living
+  # display_living
 	display_board
 	@counter +=1
 	live_die
@@ -155,7 +154,6 @@ while @counter < @times_to_run
 	puts "Cells Alive: #{@cells_alive}"
 	sleep(0.15)
 	break if @cells_alive <= 0
-	break if @start_cells == @end_cells
 
 end
 
